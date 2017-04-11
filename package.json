@@ -1,0 +1,20 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.1",
+    "node-static": "^0.7.9",
+    "ws": "^2.1.0"
+  },
+  "devDependencies": {
+    "supervisor": "^0.12.0"
+  },
+  "description": ""
+}

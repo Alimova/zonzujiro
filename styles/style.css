@@ -1,0 +1,133 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #f9f9f9;
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#application {
+    display: flex;
+    width: 80vw;
+    height: 80vh;
+}
+
+#image-frame {
+    border-radius: 50%;
+    width: 128px;
+    height: 128px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+#profile {
+    width: 350px;
+    height: 100%;
+    padding-top: 2vh;
+}
+
+#ribbon {
+    width: 50vw;
+    padding-left: 15px;
+    box-sizing: border-box;
+}
+
+#bio {
+    text-align: center;
+    font-family: georgia;
+    width: 100%;
+    word-break: break-word;
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+#bio .name {
+    text-transform: capitalize;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#friends {
+    height: 48%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: overlay;
+}
+
+.friend {
+    margin: 5px;
+}
+
+#gallery {
+    width: 100%;
+    display: flex;
+    overflow: auto;
+}
+
+.photo {
+    margin-right: 10px;
+}
+
+.photo img {
+    width: 128px;
+}
+
+#chat {
+    width: 100%;
+    height: 70vh;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #ededed;
+    border: 2px solid #ededed;
+    box-sizing: border-box;
+}
+
+.conversations {
+    height: 95vh;
+    overflow: auto
+}
+
+.answer-input {
+    height: 60px;
+    display: flex;
+}
+
+.answer-input input {
+    flex: 1;
+    font-weight: 400;
+    border: 1px solid rgba(147, 128, 108, 0.25);
+    padding: .5em .75em
+}
+
+.reply {
+    padding: 0.5em 1em 0.5em 1em;
+    font-size: 16px;
+    word-break: break-word
+}
+
+.reply:nth-child(odd) {
+    background-color: #f0f8ff;
+}
+
+.reply:nth-child(even) {
+    background-color: #eee8aa;
+}
+
+button {
+    background-color: rgba(147, 128, 108, 0.1);
+    color: #666;
+    font: inherit;
+    font-weight: 400;
+    border: 1px solid rgba(147, 128, 108, 0.25);
+    padding: .5em .75em
+}
+
+button:hover {
+    cursor: pointer
+}

@@ -8,6 +8,10 @@ const replies = document.querySelector('.replies');
 const button = document.querySelector('button');
 const input = document.querySelector('input');
 
+window.onload = function() {
+    init()
+}
+
 button.addEventListener('click', addReply);
 input.addEventListener('keydown', (e) => {
     if (e == 13) addReply()
@@ -23,20 +27,45 @@ function addReply(){
     input.value=null;
 }
 
-function get (url,callback){
-    let xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = (e) => {
-        if(xhr.status == 200 && xhr.readyState == 4){
-            callback(JSON.parse(xhr.responseText));
+//function get (url,callback){
+//    let xhr = new XMLHttpRequest();
+//    xhr.onreadystatechange = (e) => {
+//        if(xhr.status == 200 && xhr.readyState == 4){
+//            callback(JSON.parse(xhr.responseText));
+//        }
+//    }
+//    xhr.open('GET', url, true);
+//    xhr.send();
+//}
+
+function get(url){
+    return new Promise(function(resolve, reject) {
+        let xhr = new XMLHttpRequest()
+
+        xhr.onreadystatechange = function() {
+            if (xhr.status == 200 && xhr.readyState == 4) {
+                resolve(JSON.parse(xhr.responseText))
+            }
         }
-    }
-    xhr.open('GET', url, true);
-    xhr.send();
+
+        xhr.open('GET', url, true)
+
+        xhr.send(null)
+    })
 }
 
-get('/data', drawPhotos);
-get('https://randomuser.me/api', getProfile);
-get('https://randomuser.me/api/?results=15', getFriends);
+
+function init() {
+    const getMe = () => get('https://randomuser.me/api').then(getProfile)
+    const getGallery = () => get('/data').then(drawPhotos)
+    const getFriends = () => get('https://randomuser.me/api/?results=15').then(getFriends)
+
+    getMe().then(getGallery).then(getFriends)//.then(activateChat)
+}
+
+//get('/data', drawPhotos);
+//get('https://randomuser.me/api', getProfile);
+//get('https://randomuser.me/api/?results=15', getFriends);
 
 //присваиваем свойство объекту, в который будем получать результат запроса
 //xhr.onreadystatechange = function (e) {
@@ -73,6 +102,7 @@ function getProfile(profile){
 
 function getFriends(list){
     list = list.results;
+    console.log(list.length);
     for(let i=0;i<list.length;i++){
         let friend = document.createElement('div');
         let photo  = document.createElement('img');
